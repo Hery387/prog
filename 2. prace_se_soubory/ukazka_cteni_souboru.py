@@ -1,4 +1,4 @@
-cesta = "data/slova.txt"
+cesta = "2. prace_se_soubory\data\studenti.txt"
 
 # with open() as file
 # Otevření souboru v režimu pro čtení "r" s UTF-8 kódováním

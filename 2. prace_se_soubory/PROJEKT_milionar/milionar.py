@@ -55,14 +55,13 @@ def registrace():
             reader = csv.reader(file)
 
             for row in reader:
-                if username in row:
+                if username in row[0]:
                     print("The username already exists!")
                     time.sleep(2)
                     should_restart = True
-                else:
-                    with open(r'2. prace_se_soubory\PROJEKT_milionar\login_database.csv', 'a', encoding='utf-8', newline='') as psanicko:
-                        writer = csv.writer(psanicko)
-                        writer.writerow([username,password])
+        with open(r'2. prace_se_soubory\PROJEKT_milionar\login_database.csv', 'a', encoding='utf-8', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([username,password])
             file.close()
 
     print("The account was successfully created!")
@@ -99,13 +98,11 @@ def logged_in(username):
     if choice == "1":
         graph_statistics(username)
     elif choice == "2":
-        pass
+        winners(username)
     elif choice == "3":
         pass
     elif choice == "4":
-        pass
-    elif choice == "5":
-        add_winner(username)
+        menu()
     else:
         print("Invalid choice, returning to menu.")
         time.sleep(2)

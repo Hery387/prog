@@ -116,6 +116,9 @@ def graph_statistics(username):
 
     question_topic = []
     question_difficulty = []
+    question_easy = 0
+    question_medium = 0
+    question_hard = 0
 
     with open(r'2. prace_se_soubory\PROJEKT_milionar\quiz_questions.csv', 'r', encoding='utf-8', newline='') as file:
         reader = csv.reader(file)
@@ -123,7 +126,14 @@ def graph_statistics(username):
         for row in reader:
             question_topic.append(row[2])
             question_difficulty.append(row[1])
+            if row[1] == "easy":
+                question_easy += 1
+            elif row[1] == "medium":
+                question_medium += 1
+            elif row[1] == "hard":
+                question_hard += 1
 
+#Graph depending on topics
     sum_question_topics = Counter(question_topic)
     topics = sum_question_topics.keys()
     counts = sum_question_topics.values()
@@ -132,6 +142,16 @@ def graph_statistics(username):
     plt.title("Questions count")
     plt.xlabel("Question topics")
     plt.ylabel("Question count")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.show()
+
+#Graph depending on difficulty
+
+    plt.bar(["Easy", "Medium", "Hard"],[question_easy, question_medium, question_hard])
+    plt.title("Difficulty count")
+    plt.xlabel("Difficulties")
+    plt.ylabel("Difficulty count")
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.show()

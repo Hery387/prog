@@ -133,21 +133,24 @@ def graph_statistics(username):
             elif row[1] == "hard":
                 question_hard += 1
 
+
+    plt.figure(figsize=(12, 5))
+
 #Graph depending on topics
     sum_question_topics = Counter(question_topic)
     topics = sum_question_topics.keys()
     counts = sum_question_topics.values()
         
+    plt.subplot(1, 2, 1)
     plt.bar(topics, counts)
-    plt.title("Questions count")
-    plt.xlabel("Question topics")
-    plt.ylabel("Question count")
+    plt.title("Questions Count by Topic")
+    plt.xlabel("Question Topics")
+    plt.ylabel("Question Count")
     plt.xticks(rotation=45, ha="right")
-    plt.tight_layout()
-    plt.show()
 
 #Graph depending on difficulty
 
+    plt.subplot(1, 2, 2)
     plt.bar(["Easy", "Medium", "Hard"],[question_easy, question_medium, question_hard])
     plt.title("Difficulty count")
     plt.xlabel("Difficulties")

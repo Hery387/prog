@@ -259,7 +259,6 @@ def game(username):
             question, answer = random.choice(list(hard_questions.items()))
         print(question)
         print()
-        print(f"dbg cheat: {question},{answer}")
         choice = input("True [t]/False [f]: ")[0].lower()
         if choice == "t":
             choice = "True"

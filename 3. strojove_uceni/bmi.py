@@ -30,7 +30,8 @@ y_test = y[round(len(y)*0.8):]
 sit = MLPClassifier(
     hidden_layer_sizes=(10,8,6),
     activation="relu",
-    max_iter=1000
+    max_iter=1000,
+    random_state=69
 )
 
 sit.fit(x, y)

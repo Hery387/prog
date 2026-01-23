@@ -13,7 +13,6 @@ cesta = r"C:\Users\st025672\Downloads\prog\3. strojove_uceni\data\divorce.csv"
 with open(cesta, "r", encoding="utf-8") as file:
     for radek in csv.DictReader(file):
         Y.append(int(radek["Divorce_Y_N"]))
-        random.shuffle(Y)
         
         q1 = int(radek["No_home_time"]) 
         q2 = int(radek["enjoy_travel"])
@@ -30,6 +29,7 @@ split = round(0.8 * rows)
 X_train, X_test, Y_train, Y_test  = train_test_split(
         X, Y,
         test_size=0.2,
+        shuffle=True,
         random_state=42)
 
 

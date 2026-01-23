@@ -1,3 +1,5 @@
+#zdravim sveho spoluzaka, ktery se ptal na otazky
+
 import csv
 
 from sklearn.neural_network import MLPClassifier

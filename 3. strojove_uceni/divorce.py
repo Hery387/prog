@@ -10,20 +10,26 @@ import random
 
 X = []
 Y = []
-
+questions = []
 cesta = r"C:\Users\st025672\Downloads\prog\3. strojove_uceni\data\divorce.csv"
-with open(cesta, "r", encoding="utf-8") as file:
-    for radek in csv.DictReader(file):
-        Y.append(int(radek["Divorce_Y_N"]))
-        
-        q1 = int(radek["No_home_time"]) 
-        q2 = int(radek["enjoy_travel"])
-        q3 = int(radek["people_goals"])
-        q4 = int(radek["care_sick"])
-        q5 = int(radek["Aggro_argue"])
-        q6 = int(radek["argue_then_leave"])
 
-        X.append([q1, q2, q3, q4, q5, q6])
+    
+with open(cesta, "r", encoding="utf-8") as file:
+    reader = csv.reader(file)
+    hlavicka = next(reader)
+    for otazka in hlavicka[1:-1]:
+        questions.append(otazka)
+        print(otazka)
+
+with open(cesta, "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for radek in reader:
+        q = {}
+        for question in questions:
+            q[question] = int(radek[question])
+
+        X.append([q[question] for question in questions])
+        Y.append(int(radek[hlavicka[-1]]))  # Add the target variable to Y
 
 rows = len(X)
 split = round(0.8 * rows)
